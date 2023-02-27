@@ -1,12 +1,25 @@
 import React from 'react';
+import Navbar from "./navbar";
+
+import { Routes } from "react-router-dom";
 
 import './App.css';
 
 function App() {
   return (
-<div>
-  <h1>Hello World!</h1>
-</div>
+  <>
+  <div className='App-header'>
+    <h1>Test</h1>
+  </div>
+  <Navbar />
+  <div className='container'>
+    <Routes>
+    </Routes>
+  </div>
+  <footer>
+    <h4>Dveloped by Joshua Toback</h4>
+  </footer>
+  </>
   );
 }
 
