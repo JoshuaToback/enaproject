@@ -1,49 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import './navbar.css';
 
-export default function navbar() {
-    return (
-        <div className="nav">
-            {/* Pedals are numbered clockwise */}
+export default function Navbar() {
+  const [activePetal, setActivePetal] = useState(0);
 
-            <div id="pCenter">
+  // In actual final, these are hardcoded
+  const petals = [];
+  for (let i = 0; i < 6; ++i) {
+    petals.push({
+      link: '/',
+      text: i,
+      id: `p${i}`,
+    });
+  }
 
-                {/* Logo Goes here! */}
+  const onClick = (index) => (event) => {
+    setActivePetal(index);
+  };
 
-            </div>
-            <div className="link" id="p1">
-            <CustomLink to="/">1</CustomLink>
-            </div>
+  return (
+    <div className="nav petal">
+        <ul className="petal-list">
+            {petals.map(({ link, text, id }, index) => {
+              const angle = 1.0*(index - activePetal) / petals.length;
 
-            <div className="link" id="p2">
-            <CustomLink to="/">2</CustomLink>
-            </div>
+              const transformation = {
+                transform: `rotate(${angle}turn)`
+              }
 
-            <div className="link" id="p3">
-            <CustomLink to="/">3</CustomLink>
-            </div>
-
-            <div className="link" id="p4">
-            <CustomLink to="/">4</CustomLink>
-            </div>
-
-            <div className="link" id="p5">
-            <CustomLink to="/">5</CustomLink>
-            </div>
-
-            <div className="link" id="p6">
-            <CustomLink to="/">6</CustomLink>
-            </div>
+              return (
+                <li className="petal-wrapper" id={id} key={index} style={transformation}>
+                    <div className="petal-leaf">
+                        <Link className="link" to={link} onClick={onClick(index)}>
+                            { text }
+                        </Link>
+                    </div>
+                </li>
+              );
+            })}
+        </ul>
+        <div id="pCenter" className="petal-center">
+            {/* Logo Goes here! */}
         </div>
-    );
-}
-
-function CustomLink({ to, children, ...props }) {
-    return (
-        <li>
-        <Link to = {to} {...props}>
-        { children }
-        </Link>
-        </li>
-    )
+    </div>
+  );
 }
