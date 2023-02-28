@@ -60,7 +60,7 @@
     bottom: 0;
 
     transition-timing-function: ease-in-out;
-    transition-duration: 400ms;
+    transition-duration: 600ms;
     /* 25px is half the size of the center */
     transform-origin: center calc(100% + 25px);
 }
@@ -79,7 +79,7 @@
 
 .petal-leaf:hover,
 .petal-leaf:focus {
-    transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1) translateY(-10px);
 }
 
 .petal .link {

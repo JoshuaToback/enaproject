@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   return (
   <>
-  <div className='App-header'>
+  <div className='header'>
     <h1>Test</h1>
   </div>
   <Navbar />
