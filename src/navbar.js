@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import './navbar.css';
+import logo from "./images/enaP.png"
 
 export default function Navbar() {
   const [activePetal, setActivePetal] = useState(0);
 
   // In actual final, these are hardcoded
-  const petals = [];
-  for (let i = 0; i < 6; ++i) {
-    petals.push({
-      link: '/',
-      text: i,
-      id: `p${i}`,
-    });
-  }
+  const petals = [
+    {link: '/Game', text: 'Further Skies'},
+    {link: '/Cast', text: 'Cast'},
+    {link: '/Setting', text: 'Setting'},
+    {link: '/Contact', text: 'Contact'},
+    {link: '/Crew', text: 'Meet the Crew'},
+    {link: '/About', text: 'About Us'}
+  ];
 
   const onClick = (index) => (event) => {
     setActivePetal(index);
@@ -25,23 +26,24 @@ export default function Navbar() {
             {petals.map(({ link, text, id }, index) => {
               const angle = 1.0*(index - activePetal) / petals.length;
 
-              const transformation = {
-                transform: `rotate(${angle}turn)`
-              }
-
+              const petalTransformation = { transform: `rotate(${angle}turn)` };
+              const textTransformation = { transform: `rotate(-${angle}turn)` };
+              
               return (
-                <li className="petal-wrapper" id={id} key={index} style={transformation}>
-                    <div className="petal-leaf">
-                        <Link className="link" to={link} onClick={onClick(index)}>
-                            { text }
-                        </Link>
-                    </div>
+                <li className="petal-wrapper" key={index} style={petalTransformation}>
+                  <div className="petal-leaf">
+                    <Link className="link" to={link} onClick={onClick(index)}>
+                      <span style={textTransformation}>
+                        {text}
+                      </span>
+                    </Link>
+                  </div>
                 </li>
               );
             })}
         </ul>
         <div id="pCenter" className="petal-center">
-            {/* Logo Goes here! */}
+            <img src={logo} alt="enaProject"></img>
         </div>
     </div>
   );

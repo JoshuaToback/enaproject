@@ -30,6 +30,11 @@
     margin: 0 auto;
 }
 
+#pCenter {
+    background-image: url("./images/enaP.png");
+
+}
+
 .petal-list {
     box-sizing: border-box;
     width: 100%;
@@ -48,7 +53,7 @@
 /* In charge of positioning the petal around the center circle */
 .petal-wrapper {
     /* Petal dimensions */
-    width: 50px;
+    width: 75px;
     height: 150px;
     box-sizing: border-box;
     overflow: visible;
@@ -67,7 +72,8 @@
 
 /* In charge of resizing the petal on hover/focus */
 .petal-leaf {
-    background-color: gray;
+    background-color: rgb(210, 0, 140);
+    color: white;
     width: 100%;
     height: 100%;
     /* TODO: border-radius is magical and I'm sure there's a way to make these look good using it */
@@ -75,6 +81,12 @@
     border-radius: 50% 50% 100% 100%;
     transition-timing-function: ease-in-out;
     transition-duration: 400ms;
+}
+
+.petal-leaf a {
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: .7rem;
 }
 
 .petal-leaf:hover,

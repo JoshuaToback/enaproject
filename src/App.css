@@ -1,0 +1,16 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  max-height: 100vh;
+  background-color: skyblue;
+}
+
+.container {
+  margin: 1rem;
+  text-align: center;
+}
