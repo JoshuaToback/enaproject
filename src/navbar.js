@@ -32,11 +32,11 @@ export default function Navbar() {
               return (
                 <li className="petal-wrapper" key={index} style={petalTransformation}>
                   <div className="petal-leaf">
-                    <Link className="link" to={link} onClick={onClick(index)}>
+                    <CustomLink className="link" to={link} onClick={onClick(index)}>
                       <span style={textTransformation}>
                         {text}
                       </span>
-                    </Link>
+                    </CustomLink>
                   </div>
                 </li>
               );
@@ -47,4 +47,15 @@ export default function Navbar() {
         </div>
     </div>
   );
+}
+
+
+function CustomLink({ to, children, ...props }) {
+  return (
+      <li>
+      <Link to = {to} {...props}>
+      { children }
+      </Link>
+      </li>
+  )
 }
